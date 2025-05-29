@@ -4,9 +4,9 @@ import com.rabbitmq.client.*;
 
 import java.io.IOException;
 
-public class Receptor {
+public class ReceptorJULIA {
 
-  private final static String QUEUE_NAME = "minha-fila";
+  private final static String QUEUE_NAME = "julia";
 
   public static void main(String[] argv) throws Exception {
     ConnectionFactory factory = new ConnectionFactory();
@@ -19,6 +19,7 @@ public class Receptor {
 
                       //(queue-name, durable, exclusive, auto-delete, params); 
     channel.queueDeclare(QUEUE_NAME, false,   false,     false,       null);
+    channel.queueBind(QUEUE_NAME, "Aluno", "");
     
     System.out.println(" [*] Esperando recebimento de mensagens...");
 
